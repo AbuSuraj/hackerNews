@@ -1,0 +1,12 @@
+<div>
+    <div *ngFor="let story of topStories">
+        <h2>{{ story.title }}</h2>
+        <p>Author: {{ story.by }}</p>
+        <p>Score: {{ story.score }}</p>
+        <p>Time: {{ story.time | date: 'medium' }}</p>
+        <p>Number of comments: {{ story.kids?.length || 0 }}</p>
+        <!-- Display comments for each story -->
+        <!-- <app-comment *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comment> -->
+      </div>
+      
+</div>
