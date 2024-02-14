@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { StoriesComponent } from './stories/stories.component';
 import { TopStoriesService } from './service/top-stories.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CommentsComponent } from './stories/comments/comments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoriesComponent
+    StoriesComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,8 @@
         <p>Score: {{ story.score }}</p>
         <p>Time: {{ story.time | date: 'medium' }}</p>
         <p>Number of comments: {{ story.kids?.length || 0 }}</p>
-        <!-- Display comments for each story -->
-        <!-- <app-comment *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comment> -->
+         
+        <app-comments *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comments>
       </div>
       
 </div>
