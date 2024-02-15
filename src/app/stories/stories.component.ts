@@ -26,7 +26,9 @@ export class StoriesComponent implements OnInit {
       console.log(this.topStories);
       
     });
+  }
 
-
+  toggleComments(story: any): void {
+    story.showComments = !story.showComments;  
   }
 }

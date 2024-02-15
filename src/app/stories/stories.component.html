@@ -1,12 +1,28 @@
-<div>
-    <div *ngFor="let story of topStories">
-        <h2>{{ story.title }}</h2>
-        <p>Author: {{ story.by }}</p>
-        <p>Score: {{ story.score }}</p>
-        <p>Time: {{ story.time | date: 'medium' }}</p>
-        <p>Number of comments: {{ story.kids?.length || 0 }}</p>
-         
+<!-- <div class="min-w-96 mx-auto px-4">
+  <div *ngFor="let story of topStories" class="my-4 p-4 bg-white rounded-lg shadow-md">
+    <h2 class="text-xl font-bold mb-2">{{ story.title }}</h2>
+    <p class="text-gray-600">Author: {{ story.by }}</p>
+    <p class="text-gray-600">Score: {{ story.score }}</p>
+    <p class="text-gray-600">Time: {{ story.time | date: 'medium' }}</p>
+    <button class="text-blue-500 hover:underline mt-2" (click)="toggleComments(story)">Show/hide comments</button>
+    <div *ngIf="story.showComments" class="mt-4">
+      <p class="font-bold">Comments:</p>
+      <app-comments *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comments>
+    </div>
+  </div>
+</div> -->
+<div class="w-96 mx-auto px-4">
+  <div *ngFor="let story of topStories" class="my-4 p-4 bg-white rounded-lg shadow-md">
+    <h2 class="text-xl font-bold mb-2">{{ story.title }}</h2>
+    <p class="text-gray-600">Author: {{ story.by }}</p>
+    <p class="text-gray-600">Score: {{ story.score }}</p>
+    <p class="text-gray-600">Time: {{ story.time | date: 'medium' }}</p>
+    <button class="text-blue-500 hover:underline mt-2" (click)="toggleComments(story)">Show/hide comments</button>
+    <div *ngIf="story.showComments" class="mt-4">
+      <p class="font-bold">Comments:</p>
+      <div class="ml-4"> <!-- Nested container for comments -->
         <app-comments *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comments>
       </div>
-      
+    </div>
+  </div>
 </div>
