@@ -8,7 +8,7 @@ import { TopStoriesService } from '../service/top-stories.service';
 })
 export class StoriesComponent implements OnInit {
   topStories: any[] = [];
-
+  loader = true;
   constructor(private topStoriesService: TopStoriesService) { }
 
   ngOnInit(): void {
@@ -21,9 +21,10 @@ export class StoriesComponent implements OnInit {
       storyIds.slice(0, 10).forEach(storyId => {
         this.topStoriesService.getStoryDetails(storyId).subscribe(story => {
           this.topStories.push(story);
+          this.loader = false;
         });
       });
-      console.log(this.topStories);
+      // console.log(this.topStories);
       
     });
   }

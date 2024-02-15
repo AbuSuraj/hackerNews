@@ -1,5 +1,8 @@
 <div class="min-w-96 mx-auto px-4">
-  <ul class="bg-[#fff9ec] rounded-lg shadow-md">
+  <ul class="bg-[#fff9ec] rounded-lg shadow-md min-h-screen">
+    <div *ngIf="loader" class="pt-32" >
+      <app-loader ></app-loader>
+    </div>
     <li *ngFor="let story of topStories" class="my-4 p-4  ">
       <div class="flex items-center">
         <h1 class="mr-2 text-lg font-semibold">{{ story.title }}</h1>

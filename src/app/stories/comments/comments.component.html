@@ -2,7 +2,7 @@
     <div class="meta-info">
         <p class="text-gray-400 font-medium">▲  <strong>{{ comment?.by }}</strong> - {{ comment?.time  | date: 'short'}}</p>
       </div>
-      <p>{{ comment?.text | extractText }}</p>
+      <p>{{ comment?.text ?? 'comment has no text' | extractText }}</p>
       <button *ngIf="comment?.kids?.length > 0" class="underline mt-2" (click)="toggleChildren()">
         reply 
         <!-- {{ showChildren ?  'reply': '' }} -->
