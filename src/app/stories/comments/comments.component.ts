@@ -19,12 +19,14 @@ export class CommentsComponent implements OnInit {
   getCommentDetails(commentId: number): void {
     this.topStoriesService.getCommentDetails(commentId).subscribe(comment => {
       this.comment = comment;
+      console.log(this.comment);
+      
       // Recursively fetch child comments
-      if (this.comment.kids && this.comment.kids.length > 0) {
-        this.comment.kids.forEach((childCommentId: number) => {
-          this.getCommentDetails(childCommentId);
-        });
-      }
+      // if (this.comment.kids && this.comment.kids.length > 0) {
+      //   this.comment.kids.forEach((childCommentId: number) => {
+      //     this.getCommentDetails(childCommentId);
+      //   });
+      // }
     });
   }
 }
