@@ -7,6 +7,7 @@
         reply 
         <!-- {{ showChildren ?  'reply': '' }} -->
         </button>
+        <app-loader *ngIf="loading"></app-loader>
         <div class="child-comments ml-10" *ngIf="showChildren && comment?.kids && comment?.kids?.length">
             <app-comments *ngFor="let childComment of childrenComments" [commentId]="childComment?.id"></app-comments>
         </div>

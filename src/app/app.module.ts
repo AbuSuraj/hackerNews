@@ -8,13 +8,15 @@ import { TopStoriesService } from './service/top-stories.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from './stories/comments/comments.component';
 import { ExtractTextPipe } from './pipe/extract-text.pipe';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoriesComponent,
     CommentsComponent,
-    ExtractTextPipe
+    ExtractTextPipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
