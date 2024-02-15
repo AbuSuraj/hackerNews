@@ -7,7 +7,7 @@
       </div>
       <p class="text-gray-400 font-medium text-sm">
         <span>{{ story.score }} points by {{ story.by }} {{ story.time | date: 'short' }} |</span>
-        <span (click)="toggleComments(story)">  {{ story.kids?.length || 0 }} comments</span></p>
+        <span class="cursor-pointer" (click)="toggleComments(story)">  {{ story.kids?.length || 0 }} comments</span></p>
         <div *ngIf="story.showComments" class="ml-4 mt-4">  
           <app-comments *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comments>
         </div>
