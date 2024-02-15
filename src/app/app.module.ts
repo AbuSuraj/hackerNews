@@ -7,12 +7,14 @@ import { StoriesComponent } from './stories/stories.component';
 import { TopStoriesService } from './service/top-stories.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from './stories/comments/comments.component';
+import { ExtractTextPipe } from './pipe/extract-text.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoriesComponent,
-    CommentsComponent
+    CommentsComponent,
+    ExtractTextPipe
   ],
   imports: [
     BrowserModule,

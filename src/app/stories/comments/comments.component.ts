@@ -9,6 +9,9 @@ import { TopStoriesService } from 'src/app/service/top-stories.service';
 export class CommentsComponent implements OnInit {
   @Input() commentId!: number;
   comment: any;
+  showChildren: boolean = false;
+ 
+  childrenComments: any[] = []; // Array to store children comments
 
   constructor(private topStoriesService: TopStoriesService) { }
 
@@ -19,14 +22,23 @@ export class CommentsComponent implements OnInit {
   getCommentDetails(commentId: number): void {
     this.topStoriesService.getCommentDetails(commentId).subscribe(comment => {
       this.comment = comment;
-      console.log(this.comment);
-      
-      // Recursively fetch child comments
-      // if (this.comment.kids && this.comment.kids.length > 0) {
-      //   this.comment.kids.forEach((childCommentId: number) => {
-      //     this.getCommentDetails(childCommentId);
-      //   });
-      // }
+     console.log(this.comment);
+     
+      if (this.comment.kids && this.comment.kids.length > 0) {
+        // Fetch details for each child comment recursively
+        this.comment.kids.forEach((childCommentId: number) => {
+          this.topStoriesService.getCommentDetails(childCommentId).subscribe(childComment => {
+            this.childrenComments.push(childComment); // Push the child comment details into the array
+
+            console.log(this.childrenComments);
+            
+          });
+        });
+      }
     });
+  }
+
+  toggleChildren(): void {
+    this.showChildren = !this.showChildren; // Toggle the visibility of children comments
   }
 }
