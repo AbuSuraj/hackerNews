@@ -3,10 +3,10 @@
     <div *ngIf="loader" class="pt-32" >
       <app-loader ></app-loader>
     </div>
-    <li *ngFor="let story of topStories" class="my-4 p-4  ">
-      <div class="flex items-center">
+    <li *ngFor="let story of topStories" class="my-4 p-5">
+      <div class="lg:flex lg:items-center">
         <h1 class="mr-2 text-lg font-semibold">{{ story.title }}</h1>
-        <span class="text-gray-400 text-sm">({{ story.url }})</span>
+        <span class="text-gray-400 text-sm break-all">({{ story.url }})</span>
       </div>
       <p class="text-gray-400 font-medium text-sm">
         <span>{{ story.score }} points by {{ story.by }} {{ story.time | date: 'short' }} |</span>
