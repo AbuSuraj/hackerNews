@@ -1,1 +1,19 @@
-<p>comments works!</p>
+ 
+<!-- <div class="comment" *ngIf="comment">
+    <p>{{ comment.text }}</p> 
+    <div class="child-comments" *ngIf="comment.kids && comment.kids.length">
+      <ng-container *ngFor="let childCommentId of comment.kids">
+        <app-comments [commentId]="childCommentId"></app-comments>
+      </ng-container>
+    </div>
+  </div> -->
+  
+<!--  
+<div class="comment" *ngIf="comment">
+    <p>{{ comment.text }}</p>
+     
+    <div class="child-comments" *ngIf="comment.kids && comment.kids.length">
+      <app-comments *ngFor="let childCommentId of comment.kids" [commentId]="childCommentId"></app-comments>
+    </div>
+  </div>
+   -->
