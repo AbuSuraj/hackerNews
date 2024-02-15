@@ -1,10 +1,14 @@
 <div class="comment-container">
+    <div class="meta-info">
+        <p class="text-gray-400 font-medium">▲  <strong>{{ comment?.by }}</strong> - {{ comment?.time  | date: 'short'}}</p>
+      </div>
       <p>{{ comment?.text | extractText }}</p>
-      <button *ngIf="comment?.kids?.length > 0" class="text-blue-500 hover:underline mt-2" (click)="toggleChildren()">
-          {{ showChildren ? 'Hide replies' : 'View replies' }}
+      <button *ngIf="comment?.kids?.length > 0" class="underline mt-2" (click)="toggleChildren()">
+        reply 
+        <!-- {{ showChildren ?  'reply': '' }} -->
         </button>
-        <div class="child-comments" *ngIf="showChildren && comment.kids && comment.kids.length">
-            <app-comments *ngFor="let childComment of childrenComments" [commentId]="childComment.id"></app-comments>
+        <div class="child-comments ml-10" *ngIf="showChildren && comment?.kids && comment?.kids?.length">
+            <app-comments *ngFor="let childComment of childrenComments" [commentId]="childComment?.id"></app-comments>
         </div>
     </div>
     
