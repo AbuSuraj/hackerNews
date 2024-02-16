@@ -5,7 +5,7 @@
     </div>
     <li *ngFor="let story of topStories  | paginate: {id:'server', itemsPerPage:10, currentPage:currentPage, totalItems:total}" class="my-4 p-5">
       <div class="lg:flex lg:items-center">
-        <h1 class="mr-2 text-lg font-semibold">{{ story.title }}</h1>
+        <span class="mr-2 font-semibold">{{ story.title }}</span>
         <span class="text-gray-400 text-sm break-all">({{ story.url }})</span>
       </div>
       <p class="text-gray-400 font-medium text-sm">
