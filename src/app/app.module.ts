@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from './stories/comments/comments.component';
 import { ExtractTextPipe } from './pipe/extract-text.pipe';
 import { LoaderComponent } from './loader/loader.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoaderComponent } from './loader/loader.component';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    HttpClientModule 
+    HttpClientModule,
+    NgxPaginationModule 
   ],
   providers: [TopStoriesService],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,13 @@ export class TopStoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getTopStories(): Observable<number[]> {
-    return this.http.get<number[]>(`${this.hackerNewsUrl}/topstories.json`);
+  getTopStories(page: number = 1, pageSize: number = 10): Observable<number[]> {
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    return this.http.get<number[]>(`${this.hackerNewsUrl}/topstories.json`)
+                    .pipe(
+                      map((ids: number[]) => ids.slice(start, end))
+                    );
   }
 
   getStoryDetails(storyId: number): Observable<any> {

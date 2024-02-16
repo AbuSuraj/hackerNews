@@ -9,27 +9,51 @@ import { TopStoriesService } from '../service/top-stories.service';
 export class StoriesComponent implements OnInit {
   topStories: any[] = [];
   loader = true;
+  currentPage = 1;
+  pageSize = 10;
+  total = 500;
+  page = 1;
+
   constructor(private topStoriesService: TopStoriesService) { }
 
   ngOnInit(): void {
     this.getTopStories();
   }
 
-  getTopStories(){
-    this.topStoriesService.getTopStories().subscribe(storyIds => {
-      this.topStories = [];
-      storyIds.slice(0, 10).forEach(storyId => {
-        this.topStoriesService.getStoryDetails(storyId).subscribe(story => {
-          this.topStories.push(story);
-          this.loader = false;
+  getTopStories(): void {
+    this.topStoriesService.getTopStories(this.currentPage, this.pageSize)
+      .subscribe(storyIds => {
+        // this.totalItems = storyIds.length;
+        this.topStories = [];
+        storyIds.forEach(storyId => {
+          this.topStoriesService.getStoryDetails(storyId).subscribe(story => {
+            this.topStories.push(story);
+            this.loader = false;
+          });
         });
       });
-      // console.log(this.topStories);
-      
-    });
   }
+
+getData(page: number){
+  this.currentPage = page;
+  this.getTopStories();
+}
+
+  public labels: any = {
+    previousLabel: '<',
+    nextLabel: '>',
+    screenReaderPaginationLabel: 'Pagination',
+    screenReaderPageLabel: 'page',
+    screenReaderCurrentLabel: `You're on page`
+}; 
+
 
   toggleComments(story: any): void {
     story.showComments = !story.showComments;  
+  }
+
+  onPageChange(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    this.getTopStories();
   }
 }

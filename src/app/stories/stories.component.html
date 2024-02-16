@@ -3,7 +3,7 @@
     <div *ngIf="loader" class="pt-32" >
       <app-loader ></app-loader>
     </div>
-    <li *ngFor="let story of topStories" class="my-4 p-5">
+    <li *ngFor="let story of topStories  | paginate: {id:'server', itemsPerPage:10, currentPage:currentPage, totalItems:total}" class="my-4 p-5">
       <div class="lg:flex lg:items-center">
         <h1 class="mr-2 text-lg font-semibold">{{ story.title }}</h1>
         <span class="text-gray-400 text-sm break-all">({{ story.url }})</span>
@@ -15,6 +15,15 @@
           <app-comments *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comments>
         </div>
     </li>
+  <li class="p-4">
+    <pagination-controls 
+    [previousLabel]="labels.previousLabel"
+    [nextLabel]="labels.nextLabel"
+    [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+    [screenReaderPageLabel]="labels.screenReaderPageLabel"
+    [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+    id="server"  (pageChange)="getData($event)"></pagination-controls>
+  </li>
   </ul>
 </div>
 
