@@ -8,9 +8,9 @@
         <span class="mr-2 font-semibold">{{ story.title }}</span>
         <span class="text-gray-400 text-sm break-all">({{ story.url }})</span>
       </div>
-      <p class="text-gray-400 font-medium text-sm">
+      <p class="text-gray-400 font-medium text-sm flex flex-col sm:flex-row">
         <span>{{ story.score }} points by {{ story.by }} {{ story.time | date: 'short' }} |</span>
-        <span class="cursor-pointer" (click)="toggleComments(story)">  {{ story.kids?.length || 0 }} comments</span></p>
+        <span class="cursor-pointer lg:ml-2" (click)="toggleComments(story)">  {{ story.kids?.length || 0 }} comments</span></p>
         <div *ngIf="story.showComments" class="ml-4 mt-4">  
           <app-comments *ngFor="let commentId of story.kids" [commentId]="commentId"></app-comments>
         </div>
@@ -26,17 +26,4 @@
   </li>
   </ul>
 </div>
-
-<!-- 
-<div class="mx-auto px-4">
-  <div *ngFor="let story of topStories" class="my-4 p-4 bg-white rounded-lg shadow-md">
-    <h2 class="text-xl font-bold mb-2">{{ story.title }}</h2>
-    <p class="text-gray-600">Points {{ story.score }} by {{ story.by }} </p>
-    <p class="text-gray-600">Author: {{ story.by }}</p>
-    <p class="text-gray-600">Time: {{ story.time | date: 'medium' }}</p>
-    <button class="text-blue-500 hover:underline mt-2" (click)="toggleComments(story)">Show/hide comments</button>
-    <div *ngIf="story.showComments" class="mt-4">
-      <p class="font-bold">Comments: {{ story.kids?.length || 0 }}</p> 
-    </div>
-  </div>
-</div> -->
+ 
