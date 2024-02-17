@@ -1,27 +1,50 @@
 # HackerNews
+ 
+## How to use this project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.4.
+1. Clone the GitHub repository to your local machine.
 
-## Development server
+   ```bash
+   git clone https://github.com/AbuSuraj/hackerNews.git
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+2. Navigate to the project directory.
 
-## Code scaffolding
+   ```
+    cd hackerNews
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Install the project dependencies using npm.
+   ``` 
+   npm install.
+4. Run the following command
+   ```
+   npm run start
+## Project live site link:
+https://daily-hacker-news.netlify.app/
+## Used Features
+ - `Services:` TopStoriesService is used to fetch data from the Hacker News API using HTTP requests, encapsulating data retrieval logic and promoting code modularity and maintainability in Angular components.
+ -  `Pipe:` I used to extract text content from an HTML string.
+ - `Input():` decorator to communicate with parent to child. (CommentsComponent to receive the commentId value from its parent component.).
+ - `pagination:` utilised `ngx-pagination` to handle large data comming from api. 
+The pagination logic works by determining the start and end points using the current page and page size. It then retrieves the corresponding subset of story IDs from the Hacker News API.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Additional Feature:
+-  The assignment initially required implementing only the top stories and their comments. However, I extended the functionality to include five additional categories. I implemented tabs so that when users click on a tab, it displays news corresponding to the selected category.
+## Implementation Details
+### stories component
+- `Data Fetching Logic:` 
+Retrieves story IDs for a specific category from the Hacker News API.
+Iterates through the fetched IDs to obtain detailed information about each story.
+Manages loading states to indicate when data retrieval is in progress.
+- `Pagination Logic:`
+Calculates the start and end indices based on the current page and page size.
+Slices the array of story IDs accordingly to fetch a subset of stories for the current page.
+- `Tab Navigation Logic:`
+Associates each tab with a specific story category.
+Updates the active tab and reloads stories based on the selected category.
+Ensures the UI reflects the active tab state to provide visual feedback to users.
+- `nesting of comments:` In the CommentsComponent, I fetch comment details using TopStoriesService upon receiving a comment ID. If a comment has children, I recursively retrieve details for each child comment, populating the childrenComments array for rendering.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
