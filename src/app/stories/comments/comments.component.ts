@@ -23,15 +23,12 @@ export class CommentsComponent implements OnInit {
     this.topStoriesService.getCommentDetails(commentId).subscribe(comment => {
       this.comment = comment;
       this.loading = false;
-     console.log(this.comment);
      
       if (this.comment.kids && this.comment.kids.length > 0) {
-        // Fetch details for each child comment recursively
+      
         this.comment.kids.forEach((childCommentId: number) => {
           this.topStoriesService.getCommentDetails(childCommentId).subscribe(childComment => {
-            this.childrenComments.push(childComment); // Push the child comment details into the array
-
-            console.log(this.childrenComments);
+            this.childrenComments.push(childComment); 
             
           });
         });
@@ -40,6 +37,6 @@ export class CommentsComponent implements OnInit {
   }
 
   toggleChildren(): void {
-    this.showChildren = !this.showChildren; // Toggle the visibility of children comments
+    this.showChildren = !this.showChildren;
   }
 }
