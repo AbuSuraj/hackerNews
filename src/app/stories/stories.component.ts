@@ -77,4 +77,10 @@ getData(page: number){
     this.currentPage = pageNumber;
     this.getTopStories();
   }
+
+  openUrlInNewTab(url: string): void {
+    if (url) {
+      window.open(url, '_blank');
+    }
+  }
 }

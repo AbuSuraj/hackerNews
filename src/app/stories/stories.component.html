@@ -20,8 +20,9 @@
     <li *ngFor="let story of topStories | paginate: {id:'server', itemsPerPage:10, currentPage:currentPage, totalItems:total}; let i = index" class="my-4 p-5">
       <div class="lg:flex lg:items-center">
         <span class="text-gray-600 mr-2">{{ i + 1 }}. ▲  </span>
-        <span class="mr-2 font-semibold text-black">{{ story.title }}</span>
-        <span class="text-gray-400 text-sm break-all">({{ story.url }})</span>
+        <span class="mr-2 font-semibold text-black">{{ story.title }}</span> 
+        <span class="text-gray-400 text-sm break-all cursor-pointer hover:text-sky-400" (click)="openUrlInNewTab(story.url)">{{ story.url }}</span>
+
       </div>
       <p class="text-gray-400 font-medium text-sm flex flex-col sm:flex-row">
         <span>{{ story.score }} points by {{ story.by }} {{ story.time | date: 'short' }} |</span>
