@@ -1,5 +1,6 @@
 # HackerNews
- 
+- It is a responsive web application built with Angular, featuring dynamic tab navigation and pagination for browsing Hacker News stories and comments.
+- It offers users the ability to explore different story categories and view comments, with responsive design ensuring accessibility across devices.
 ## How to use this project
 
 1. Clone the GitHub repository to your local machine.
