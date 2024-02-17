@@ -2,10 +2,10 @@
     <div class="meta-info">
         <p class="text-gray-400 font-medium">▲  <strong>{{ comment?.by }}</strong> - {{ comment?.time  | date: 'short'}}</p>
       </div>
-      <p class="break-all">{{ comment?.text ?? 'comment has no text' | extractText }}</p>
-      <button *ngIf="comment?.kids?.length > 0" class="underline mt-2" (click)="toggleChildren()">
+      <p class="break-all text-black">{{ comment?.text ?? 'comment has no text' | extractText }}</p>
+      <button *ngIf="comment?.kids?.length > 0" class="underline text-black mt-2" (click)="toggleChildren()">
         reply 
-        <!-- {{ showChildren ?  'reply': '' }} -->
+       
         </button>
         <app-loader *ngIf="loading"></app-loader>
         <div class="child-comments lg-5 lg:ml-10" *ngIf="showChildren && comment?.kids && comment?.kids?.length">
