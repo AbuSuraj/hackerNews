@@ -1,8 +1,22 @@
 <div class="min-w-96 mx-auto px-4">
+  <div class="sticky top-0 z-50">
+    <div role="tablist" class="tabs tabs-sm tabs-boxed">
+      <span (click)="categoryChange('topstories')" role="tab" class="tab" [class.tab-active]="activeTab === 'topstories'">Top Stories</span>
+      <span (click)="categoryChange('newstories')" role="tab" class="tab" [class.tab-active]="activeTab === 'newstories'">New Stories</span>
+      <span (click)="categoryChange('beststories')" role="tab" class="tab" [class.tab-active]="activeTab === 'beststories'">Best Stories</span>
+      <span (click)="categoryChange('askstories')" role="tab" class="tab" [class.tab-active]="activeTab === 'askstories'">Ask HN</span>
+      <span (click)="categoryChange('showstories')" role="tab" class="tab" [class.tab-active]="activeTab === 'showstories'">Show HN</span>
+      <span (click)="categoryChange('jobstories')" role="tab" class="tab" [class.tab-active]="activeTab === 'jobstories'">Jobs</span>
+    </div>
+  </div>
   <ul class="bg-[#fff9ec] rounded-lg shadow-md min-h-screen">
+    
+    
     <div *ngIf="loader" class="pt-32" >
       <app-loader ></app-loader>
     </div>
+    
+
     <li *ngFor="let story of topStories  | paginate: {id:'server', itemsPerPage:10, currentPage:currentPage, totalItems:total}" class="my-4 p-5">
       <div class="lg:flex lg:items-center">
         <span class="mr-2 font-semibold">{{ story.title }}</span>

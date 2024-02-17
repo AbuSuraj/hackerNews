@@ -10,13 +10,18 @@ export class TopStoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getTopStories(page: number = 1, pageSize: number = 10): Observable<number[]> {
-    const start = (page - 1) * pageSize;
-    const end = start + pageSize;
-    return this.http.get<number[]>(`${this.hackerNewsUrl}/topstories.json`)
-                    .pipe(
-                      map((ids: number[]) => ids.slice(start, end))
-                    );
+  getTopStories(searchCategory:string, page?: number , pageSize?: number): Observable<number[]> {
+    if(page && pageSize){
+      const start = (page - 1) * pageSize;
+      const end = start + pageSize;
+      return this.http.get<number[]>(`${this.hackerNewsUrl}/${searchCategory}.json`)
+                      .pipe(
+                        map((ids: number[]) => ids.slice(start, end))
+                      );
+    }
+    else {
+        return this.http.get<number[]>(`${this.hackerNewsUrl}/${searchCategory}.json`)
+    }
   }
 
   getStoryDetails(storyId: number): Observable<any> {

@@ -9,7 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommentsComponent } from './stories/comments/comments.component';
 import { ExtractTextPipe } from './pipe/extract-text.pipe';
 import { LoaderComponent } from './loader/loader.component';
-import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
     StoriesComponent,
     CommentsComponent,
     ExtractTextPipe,
-    LoaderComponent
+    LoaderComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     HttpClientModule,
-    NgxPaginationModule 
+    NgxPaginationModule,
+    ReactiveFormsModule 
   ],
   providers: [TopStoriesService],
   bootstrap: [AppComponent]
