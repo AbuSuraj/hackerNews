@@ -26,6 +26,7 @@ https://daily-hacker-news.netlify.app/
  - `Input():` decorator to communicate with parent to child. (CommentsComponent to receive the commentId value from its parent component.).
  - `pagination:` utilised `ngx-pagination` to handle large data comming from api. 
 The pagination logic works by determining the start and end points using the current page and page size. It then retrieves the corresponding subset of story IDs from the Hacker News API.
+- `responsive:` My app adjusts seamlessly to various screen sizes, providing an optimal user experience across devices
 
 
 
