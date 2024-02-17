@@ -32,6 +32,7 @@ The pagination logic works by determining the start and end points using the cur
 
 ## Additional Feature:
 -  The assignment initially required implementing only the top stories and their comments. However, I extended the functionality to include five additional categories. I implemented tabs so that when users click on a tab, it displays news corresponding to the selected category.
+- when clicking on url in a story it will open a new tab, and navigate to this link. 
 ## Implementation Details
 ### stories component
 - `Data Fetching Logic:` 
